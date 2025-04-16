@@ -1,0 +1,5 @@
+{
+  "upper": ["/icons/brain.svg", "/icons/eyes.svg"],
+  "middle": ["/icons/heart.svg", "/icons/lungs.svg", "/icons/ribs.svg"],
+  "lower": ["/icons/stomach.svg", "/icons/intestines.svg", "/icons/hips.svg", "/icons/spine.svg"]
+}

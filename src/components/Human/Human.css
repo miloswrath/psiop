@@ -1,0 +1,21 @@
+.human-wrapper {
+  position: relative;
+  width: fit-content;
+  padding: 20px;
+}
+
+.human-svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.overlay-dot {
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  border: 2px solid white;
+  cursor: pointer;
+  z-index: 2;
+}

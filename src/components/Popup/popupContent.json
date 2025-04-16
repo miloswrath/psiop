@@ -1,0 +1,14 @@
+{
+  "brain": [
+    "Your brain score {{score}} is very high, this is great! Your cognitive systems are functioning optimally.",
+    "Your brain score {{score}} is lower than average. Consider exploring activities that support cognitive function."
+  ],
+  "heart": [
+    "Your heart score {{score}} reflects strong cardiovascular health—keep up the healthy habits!",
+    "Your heart score {{score}} suggests some concerns. A follow-up with a provider may be beneficial."
+  ],
+  "lungs": [
+    "Excellent lung function! Your lung score {{score}} shows great respiratory capacity.",
+    "Your lung score {{score}} is below expected levels. Monitoring or lifestyle adjustments may help."
+  ]
+}

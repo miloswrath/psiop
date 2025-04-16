@@ -1,0 +1,71 @@
+.home-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: #e1f1f1; /* Light blue background */
+  margin: 0;
+  padding: 0;
+}
+
+/* 
+   We'll store the divider's x-position in a CSS variable 
+   so you can tweak it easily (e.g., 40%, 60%, etc.).
+*/
+.home-content {
+  position: relative;
+  display: flex;
+  flex: 1; /* fill the vertical space below the banner */
+  --divider-left: 50%; /* Adjust this value to move the divider left/right */
+  margin: 0;
+  padding: 0;
+}
+
+/* The left section where the human is displayed */
+.left-section {
+  flex: 0.5; /* takes one unit of the available width */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* The right section for ellipses */
+.right-section {
+  flex: 1; /* takes one unit of the available width */
+  display: flex;
+  gap: 2rem; /* spacing between circles */
+  justify-content: center;
+  align-items: center;
+}
+
+/* The vertical divider */
+.divider {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: var(--divider-left);
+  width: 2px;
+  background-color: transparent;
+}
+
+/* Container holding all ellipses in a vertical line */
+.ellipseDivider {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 2rem; /* space between ellipses */
+  padding-top: 2rem;
+}
+
+/* Vertical divider line running behind ellipses */
+.ellipseDivider::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 2px;
+  background-color: #ccc;
+  z-index: -1;
+}
