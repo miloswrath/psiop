@@ -1,17 +1,24 @@
 import React from 'react';
 import { Bar } from 'react-chartjs-2';
-import { Chart as ChartJS, BarElement, LinearScale, CategoryScale, Tooltip } from 'chart.js';
+import {
+  Chart as ChartJS,
+  BarElement,
+  LinearScale,
+  CategoryScale,
+  Tooltip,
+} from 'chart.js';
 import './Graph.css';
+import { borderRadius } from 'polished';
 
 ChartJS.register(BarElement, LinearScale, CategoryScale, Tooltip);
 
-const HealthBar = ({ percentage }) => {
+const Graph = ({ percentage }) => {
   const data = {
     labels: [''],
     datasets: [
       {
         label: 'Health',
-        data: [percentage],
+        data: [100], // Always fill to 100
         backgroundColor: (ctx) => {
           const gradient = ctx.chart.ctx.createLinearGradient(0, 0, 300, 0);
           gradient.addColorStop(0, 'red');
@@ -19,7 +26,7 @@ const HealthBar = ({ percentage }) => {
           gradient.addColorStop(1, 'green');
           return gradient;
         },
-        borderRadius: 10,
+        borderRadius: 0,
         barThickness: 20,
       },
     ],
@@ -40,9 +47,29 @@ const HealthBar = ({ percentage }) => {
     plugins: {
       legend: { display: false },
       tooltip: { enabled: false },
+      verticalLine: {
+        value: percentage,
+      },
     },
     responsive: true,
     maintainAspectRatio: false,
+  };
+
+  const verticalLinePlugin = {
+    id: 'verticalLine',
+    afterDatasetsDraw(chart, args, pluginOptions) {
+      const { ctx, chartArea, scales } = chart;
+      const x = scales.x.getPixelForValue(pluginOptions.value);
+
+      ctx.save();
+      ctx.beginPath();
+      ctx.moveTo(x, chartArea.top);
+      ctx.lineTo(x, chartArea.bottom);
+      ctx.lineWidth = 2;
+      ctx.strokeStyle = 'green';
+      ctx.stroke();
+      ctx.restore();
+    },
   };
 
   return (
@@ -52,7 +79,7 @@ const HealthBar = ({ percentage }) => {
         <span className="percent">{percentage}%</span>
       </div>
       <div className="bar-wrapper">
-        <Bar data={data} options={options} height={50} />
+        <Bar data={data} options={options} plugins={[verticalLinePlugin]} />
         <div className="bar-labels">
           <span>Bad</span>
           <span>Good</span>
@@ -62,4 +89,4 @@ const HealthBar = ({ percentage }) => {
   );
 };
 
-export default HealthBar;
+export default Graph;
