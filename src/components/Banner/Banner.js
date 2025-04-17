@@ -14,7 +14,7 @@ const Banner = () => {
 
       <div className="buttonWrapper">
         <div className="circleButton">
-          <WaffleIcon className="waffleOverlay" />
+        <img src={WaffleIcon} alt="Waffle Icon" className="waffleOverlay" />
         </div>
       </div>
 

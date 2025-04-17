@@ -1,0 +1,33 @@
+.main-ellipse {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.split-layout {
+  display: flex;
+  width: 100%;
+  height: 85vh;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.left-pane, .right-pane {
+  flex: 1;
+  padding: 2rem;
+}
+
+/* Adjust horizontal position of left-pane here */
+.left-pane {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  padding: 2rem;
+  transform: translateX(-5%); /* 👈 change this value to shift left/right */
+}
+
+/* Optional: Style right-pane placeholder */
+.right-pane {
+}

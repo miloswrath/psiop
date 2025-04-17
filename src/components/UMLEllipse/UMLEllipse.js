@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect } from "react"
 import "./UMLEllipse.css";
 import Popup from "../Popup/Popup";
 import { lighten } from "polished";
@@ -36,7 +36,7 @@ const UMLEllipse = ({ region = "middle", width = "100%", borderColor = "#000", l
       const iconSize = 36; // px size of icon button
       const padding = 2; // px cutout space
       const centerToEdge = diameter / 2;
-      const desiredRadius = centerToEdge - (iconSize / 2 + padding);
+      const desiredRadius = centerToEdge + iconSize * 0.25;
       const percent = (desiredRadius / centerToEdge) * 50; // convert to %
       setRadiusPercent(percent);
     }
@@ -54,16 +54,26 @@ const UMLEllipse = ({ region = "middle", width = "100%", borderColor = "#000", l
           const angle = angleStep * idx - Math.PI / 2;
           const x = 50 + radiusPercent * Math.cos(angle);
           const y = 50 + radiusPercent * Math.sin(angle);
+          const iconName = filenames[idx].replace(".svg", "");
+
           return (
             <button
               key={idx}
               className="ellipse-icon-button"
-              style={{ top: `${y}%`, left: `${x}%` }}
+              style={{ 
+                top: `${y}%`, 
+                left: `${x}%`
+              }}
               onClick={() => setActiveIdx(idx === activeIdx ? null : idx)}
               aria-label={`Open popup for icon ${idx}`}
             >
               <img src={src} alt={`icon-${idx}`} />
-              {activeIdx === idx && <div className="popup">Hello world</div>}
+              {activeIdx === idx && (
+                <Popup
+                  iconKey={iconName} // remove .svg extension
+                  score={75}       // or some actual score later
+                />
+              )}
             </button>
           );
         })}
