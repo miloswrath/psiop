@@ -1,0 +1,16 @@
+.health-container {
+    background-color: #fffaf4;
+    padding: 20px;
+    border-radius: 12px;
+    width: 300px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .health-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  
