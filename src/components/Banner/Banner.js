@@ -1,7 +1,7 @@
 import React from "react";
 import './Banner.css';
 import { ReactComponent as IconSvg } from "../../assets/svgs/icon.svg"; // or use an image file if needed
-import {ReactComponent as waffleIcon } from "../../assets/svgs/waffle.svg"
+import WaffleIcon from "../../assets/svgs/waffle.svg"; // adjust path as needed
 
 const Banner = () => {
   return (
@@ -14,7 +14,7 @@ const Banner = () => {
 
       <div className="buttonWrapper">
         <div className="circleButton">
-          <waffleIcon className="waffleOverlay" />
+          <WaffleIcon className="waffleOverlay" />
         </div>
       </div>
 
