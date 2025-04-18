@@ -1,8 +1,10 @@
 import React from "react";
 import './Banner.css';
-import { ReactComponent as IconSvg } from "../../assets/svgs/icon.svg"; // or use an image file if needed
-import { useNavigate } from 'react-router-dom';
-import WaffleIcon from "../../assets/svgs/waffle.svg"; // adjust path as needed
+
+import { ReactComponent as IconSvg } from "../../assets/svgs/icon.svg";
+import waffle from "../../assets/svgs/waffle.svg"; // ✅ Import as image
+
+
 
 const Banner = () => {
   const navigate = useNavigate();
@@ -12,11 +14,14 @@ const Banner = () => {
 
       {/* Top-left icon */}
       <IconSvg className="topLeftIcon" />
-      {/* If using PNG/JPG: <img src={iconPng} alt="Icon" className="topLeftIcon" /> */}
 
       <div className="buttonWrapper">
         <div className="circleButton">
-        <img src={WaffleIcon} alt="Waffle Icon" className="waffleOverlay" />
+
+          <img src={waffle} alt="Waffle Icon" className="waffleOverlay" /> {/* ✅ Fixed */}
+
+
+
         </div>
       </div>
 
@@ -30,4 +35,3 @@ const Banner = () => {
 };
 
 export default Banner;
-

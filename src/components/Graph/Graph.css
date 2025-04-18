@@ -1,0 +1,36 @@
+.bar-wrapper {
+  height: 50px;
+  width: 100%;
+  padding: 15px;
+  box-sizing: border-box;
+}
+
+
+.health-container {
+  background-color: #fffaf4;
+  padding: 20px;
+  border-radius: 12px;
+  max-width: 400px;
+  margin: 0 auto;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  position: relative;
+  overflow: visible; /* ✅ allow children to draw past container edges */
+}
+
+  
+  .health-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+
+  .bar-labels {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    margin-top: 6px;
+    width: 100%; /* ✅ make it stretch fully */
+    padding: 0 2px; /* optional: add a little side padding */
+  }
+  
