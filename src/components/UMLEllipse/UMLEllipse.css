@@ -1,3 +1,6 @@
+html, body, #root {
+  height: 100%
+}
 .ellipse-wrapper {
   position: relative;
   aspect-ratio: 1 / 1;
@@ -26,11 +29,11 @@
 .ellipse-icon-button {
   position: absolute;
   transform: translate(-50%, -50%);
-  width: 40px; /* icon size + 4px padding total */
-  height: 40px;
+  width: 80px; /* icon size + 4px padding total */
+  height: 80px;
   background-color: white; /* creates the white cutout effect */
   border-radius: 50%;
-  border: 2px solid white; /* forces ellipse border to be cut */
+  border: none;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -40,8 +43,8 @@
 }
 
 .ellipse-icon-button img {
-  width: 80%;
-  height: 80%;
+  width: 100%;
+  height: 100%;
   object-fit: contain;
   pointer-events: none;
 }

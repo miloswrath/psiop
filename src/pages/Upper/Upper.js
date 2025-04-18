@@ -11,8 +11,15 @@ function Upper() {
     <Banner />
 
       <div className="upper-content" >
-
-      <UMLEllipse region="upper" width="250px" borderColor="red" />
+      
+      <div className="split-layout">
+        <div className="left-pane">
+          <UMLEllipse region="upper" width="700px" borderColor="red" />
+        </div>
+        <div className="right-pane">
+          {/* Add future content here */}
+        </div>
+      </div>
       
       </div>
 
