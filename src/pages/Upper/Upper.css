@@ -30,8 +30,10 @@
 
 /* Optional: Style right-pane placeholder */
 .right-pane {
-}
-
-.graph {
-  width: 70vh;
+  display: flex;
+  flex-direction: column; /* Stack children vertically */
+  align-items: center;     /* Center horizontally */
+  justify-content: center; /* Center vertically */
+  padding: 2rem;
+  gap: 1.5rem;              /* Optional spacing between Graph and TextBox */
 }

@@ -1,0 +1,17 @@
+.textbox {
+  padding: 10px 16px;
+  border-radius: 10px;
+  background-color: #fffaf4;
+  color: #333;
+  font-weight: 500;
+  font-size: 34px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  margin-top: 12px;
+  /* Behavior */
+  max-width: 100%;
+  word-wrap: break-word;
+  word-break: break-word;
+  white-space: pre-wrap;
+
+  /* Dynamic height, fixed width from style prop */
+}
