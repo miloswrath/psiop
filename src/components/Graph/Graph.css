@@ -1,0 +1,42 @@
+.ratio-box {
+  position: relative;
+  width: 100%;
+  padding-top: 20%; /* 1/5 = 0.2 = 20% height of width */
+}
+
+.bar-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  padding: 1em;
+  box-sizing: border-box;
+}
+
+.health-container {
+  background-color: #fffaf4;
+  padding: 1.25em;
+  border-radius: 0.75em;
+  max-width: 100%;
+  margin: 0 auto;
+  box-shadow: 0 0.25em 0.625em rgba(0, 0, 0, 0.1);
+  overflow: visible;
+}
+
+.health-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.75em;
+  font-size: 1em;
+}
+
+.bar-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.85em;
+  margin-top: 0.5em;
+  width: 100%;
+  padding: 0 0.25em;
+}

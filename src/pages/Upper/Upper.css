@@ -31,3 +31,7 @@
 /* Optional: Style right-pane placeholder */
 .right-pane {
 }
+
+.graph {
+  width: 70vh;
+}
