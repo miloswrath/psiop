@@ -1,9 +1,11 @@
 import React from "react";
 import './Banner.css';
 import { ReactComponent as IconSvg } from "../../assets/svgs/icon.svg"; // or use an image file if needed
+import { useNavigate } from 'react-router-dom';
 import WaffleIcon from "../../assets/svgs/waffle.svg"; // adjust path as needed
 
 const Banner = () => {
+  const navigate = useNavigate();
   return (
     <div className="navigation">
       <div className="navigationBackground" />
@@ -19,7 +21,7 @@ const Banner = () => {
       </div>
 
       <div className="navButtons">
-        <button className="navButton">Home</button>
+        <button className="navButton" onClick={() => navigate('/')}>Home</button>
         <button className="navButton">About</button>
         <button className="navButton">Education</button>
       </div>
