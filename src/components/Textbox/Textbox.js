@@ -1,4 +1,5 @@
 import React from "react";
+<<<<<<< HEAD
 
 const TextBox = ({ text }) => {
   return (
@@ -19,6 +20,13 @@ const TextBox = ({ text }) => {
         marginTop: "12px",
       }}
     >
+=======
+import "./Textbox.css";
+
+const TextBox = ({ text, size = "250px" }) => {
+  return (
+    <div className="textbox" style={{ width: size }}>
+>>>>>>> ba48f313bd2036a636e18d3736b39f587debe065
       {text}
     </div>
   );
