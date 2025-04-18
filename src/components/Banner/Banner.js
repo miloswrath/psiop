@@ -1,6 +1,6 @@
 import React from "react";
 import './Banner.css';
-
+import { useNavigate } from "react-router-dom";
 import { ReactComponent as IconSvg } from "../../assets/svgs/icon.svg";
 import waffle from "../../assets/svgs/waffle.svg"; // ✅ Import as image
 

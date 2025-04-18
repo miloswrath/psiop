@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-=======
-
->>>>>>> ba48f313bd2036a636e18d3736b39f587debe065
 import React from 'react';
 import { Bar } from 'react-chartjs-2';
 import {
@@ -12,41 +8,26 @@ import {
   Tooltip,
 } from 'chart.js';
 import './Graph.css';
-<<<<<<< HEAD
-import { borderRadius } from 'polished';
-
-ChartJS.register(BarElement, LinearScale, CategoryScale, Tooltip);
-
-const Graph = ({ percentage }) => {
-=======
 
 ChartJS.register(BarElement, LinearScale, CategoryScale, Tooltip);
 
 const Graph = ({ percentage, size = "100%" }) => {
->>>>>>> ba48f313bd2036a636e18d3736b39f587debe065
   const data = {
     labels: [''],
     datasets: [
       {
         label: 'Health',
-<<<<<<< HEAD
-        data: [100], // Always fill to 100
-=======
         data: [100],
->>>>>>> ba48f313bd2036a636e18d3736b39f587debe065
         backgroundColor: (ctx) => {
-          const gradient = ctx.chart.ctx.createLinearGradient(0, 0, 300, 0);
+          const chartWidth = ctx.chart.width;
+          const gradient = ctx.chart.ctx.createLinearGradient(0, 0, chartWidth, 0);
           gradient.addColorStop(0, 'red');
           gradient.addColorStop(0.5, 'yellow');
           gradient.addColorStop(1, 'green');
           return gradient;
         },
         borderRadius: 0,
-<<<<<<< HEAD
-        barThickness: 20,
-=======
         barThickness: 'flex', // use flexible sizing
->>>>>>> ba48f313bd2036a636e18d3736b39f587debe065
       },
     ],
   };
@@ -54,30 +35,13 @@ const Graph = ({ percentage, size = "100%" }) => {
   const options = {
     indexAxis: 'y',
     scales: {
-<<<<<<< HEAD
-      x: {
-        min: 0,
-        max: 100,
-        display: false,
-      },
-      y: {
-        display: false,
-      },
-=======
       x: { min: 0, max: 100, display: false },
       y: { display: false },
->>>>>>> ba48f313bd2036a636e18d3736b39f587debe065
     },
     plugins: {
       legend: { display: false },
       tooltip: { enabled: false },
-<<<<<<< HEAD
-      verticalLine: {
-        value: percentage,
-      },
-=======
       verticalLine: { value: percentage },
->>>>>>> ba48f313bd2036a636e18d3736b39f587debe065
     },
     responsive: true,
     maintainAspectRatio: false,
@@ -88,10 +52,6 @@ const Graph = ({ percentage, size = "100%" }) => {
     afterDatasetsDraw(chart, args, pluginOptions) {
       const { ctx, chartArea, scales } = chart;
       const x = scales.x.getPixelForValue(pluginOptions.value);
-<<<<<<< HEAD
-
-=======
->>>>>>> ba48f313bd2036a636e18d3736b39f587debe065
       ctx.save();
       ctx.beginPath();
       ctx.moveTo(x, chartArea.top);
@@ -103,14 +63,6 @@ const Graph = ({ percentage, size = "100%" }) => {
     },
   };
 
-<<<<<<< HEAD
-  return (
-    <div className="health-container">
-      <div className="health-header">
-        <span className="label">Health</span>
-        <span className="percent">{percentage}%</span>
-      </div>
-=======
 return (
   <div className="health-container" style={{ width: size }}>
     <div className="health-header">
@@ -119,7 +71,6 @@ return (
     </div>
 
     <div className="ratio-box">
->>>>>>> ba48f313bd2036a636e18d3736b39f587debe065
       <div className="bar-wrapper">
         <Bar data={data} options={options} plugins={[verticalLinePlugin]} />
         <div className="bar-labels">
@@ -128,16 +79,10 @@ return (
         </div>
       </div>
     </div>
-<<<<<<< HEAD
-  );
-};
-
-=======
   </div>
 );
 
 };
 
 
->>>>>>> ba48f313bd2036a636e18d3736b39f587debe065
 export default Graph;

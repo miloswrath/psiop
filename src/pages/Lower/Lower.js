@@ -3,20 +3,20 @@ import UMLEllipse from "../../components/UMLEllipse/UMLEllipse";
 import Banner from "../../components/Banner/Banner";
 import Graph from "../../components/Graph/Graph";
 import TextBox from "../../components/Textbox/Textbox"
-import "./Middle.css";
+import "./Lower.css";
 
-function Middle() {
+function Lower() {
 
   return (
 
-    <div className="middle-container" >
+    <div className="lower-container" >
     <Banner />
 
-      <div className="middle-content" >
+      <div className="lower-content" >
       
       <div className="split-layout">
         <div className="left-pane">
-          <UMLEllipse region="middle" width="700px" borderColor="red" />
+          <UMLEllipse region="lower" width="700px" borderColor="red" />
         </div>
         <div className="right-pane">
           {/* Add future content here */}
@@ -43,4 +43,4 @@ and here's line three with more detail.`}
 } 
 
 
-export default Middle;
+export default Lower;
