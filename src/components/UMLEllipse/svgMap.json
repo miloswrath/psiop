@@ -1,5 +1,5 @@
 {
   "upper": ["sleep.svg", "mri.svg", "edu.svg", "cognition.svg"],
-  "middle": ["heart.svg", "lungs.svg", "ribs.svg"],
-  "lower": ["stomach.svg", "intestines.svg", "hips.svg", "spine.svg"]
+  "middle": ["diabetes.svg", "blood_pressure.svg", "simple_logo.svg", "heart_cardiogram.svg"],
+  "lower": ["sexual_reproductive_health.svg", "smoking.svg", "exercise_running.svg", "alcoholic_drinks.svg"]
 }

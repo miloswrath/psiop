@@ -14,6 +14,37 @@
   "edu": [
   "Excellent lung function! Your lung score {{score}} shows great respiratory capacity.",
   "Your lung score {{score}} is below expected levels. Monitoring or lifestyle adjustments may help."
+  ],
+  "diabetes": [
+  "Your diabetes score {{score}} is optimal. Keep up the great work!",
+  "Your diabetes score {{score}} indicates a need for lifestyle changes. Consider consulting a healthcare provider."
+  ],
+  "blood_pressure": [
+    "Your blood pressure score {{score}} is excellent. Maintain your healthy habits!",
+    "Your blood pressure score {{score}} suggests potential issues. Regular monitoring is recommended."
+  ],
+  "simple_logo": [
+  "Your hypertension score {{score}} is in a healthy range. Keep up the heart-healthy habits!",
+  "Your hypertension score {{score}} indicates elevated blood pressure. Monitoring and lifestyle changes may help lower risk."
+  ],
+  "heart_cardiogram": [
+    "Your heart disease score {{score}} reflects strong cardiovascular health—keep up the healthy habits!",
+    "Your heart disease score {{score}} suggests some concerns. A follow-up with a provider may be beneficial."
+  ],
+  "sexual_reproductive_health": [
+  "Based on your sex, you may be more prone to certain health conditions. Staying active, eating well, and regular checkups can help reduce your risk.",
+  "Your sex may influence your risk for specific health issues. However, adopting healthy habits can help prevent or delay many of these complications."
+  ],
+  "smoking": [
+    "Your smoking score {{score}} is excellent. Maintain your healthy habits!",
+    "Your smoking score {{score}} suggests potential issues. Regular monitoring is recommended."
+  ],
+  "exercise_running": [
+    "Your exercise score {{score}} is optimal. Keep up the great work!",
+    "Your exercise score {{score}} indicates a need for lifestyle changes. Consider consulting a healthcare provider."
+  ],
+  "alcoholic_drinks": [
+    "Your alcohol score {{score}} is excellent. Maintain your healthy habits!",
+    "Your alcohol score {{score}} suggests potential issues. Regular monitoring is recommended."
   ]
-
 }

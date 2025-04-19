@@ -3,26 +3,26 @@ import UMLEllipse from "../../components/UMLEllipse/UMLEllipse";
 import Banner from "../../components/Banner/Banner";
 import Graph from "../../components/Graph/Graph";
 import TextBox from "../../components/Textbox/Textbox"
-import "./Middle.css";
+import "./Lower.css";
 
-function Middle() {
+function Lower() {
 
   return (
 
-    <div className="middle-container" >
+    <div className="lower-container" >
     <Banner />
 
-      <div className="middle-content" >
+      <div className="lower-content" >
       
       <div className="split-layout">
         <div className="left-pane">
-          <UMLEllipse region="middle" width="700px" borderColor="red" />
+          <UMLEllipse region="lower" width="700px" borderColor="red" />
         </div>
         <div className="right-pane">
           {/* Add future content here */}
           <Graph className="graph" percentage={69} size="900px" />
           <TextBox size="900px" text=
-          {`This section focuses on metabolic and cardiovascular health. Diabetes and high blood pressure are key risk factors that can impact heart function over time. Hypertension, often related to lifestyle and genetics, further contributes to cardiovascular strain. Combined with your heart disease risk, these measures offer a clear picture of your overall heart and circulatory health.`} 
+          {`This overview highlights how lifestyle and demographic factors—like sex, smoking, alcohol use, and physical activity—affect long-term health. While some risks are biological, healthy habits like regular exercise can help reduce negative outcomes and support overall well-being.`} 
            />
         </div>
       </div>
@@ -41,4 +41,4 @@ function Middle() {
 } 
 
 
-export default Middle;
+export default Lower;

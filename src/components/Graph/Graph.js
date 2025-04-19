@@ -8,26 +8,26 @@ import {
   Tooltip,
 } from 'chart.js';
 import './Graph.css';
-import { borderRadius } from 'polished';
 
 ChartJS.register(BarElement, LinearScale, CategoryScale, Tooltip);
 
-const Graph = ({ percentage }) => {
+const Graph = ({ percentage, size = "100%" }) => {
   const data = {
     labels: [''],
     datasets: [
       {
         label: 'Health',
-        data: [100], // Always fill to 100
+        data: [100],
         backgroundColor: (ctx) => {
-          const gradient = ctx.chart.ctx.createLinearGradient(0, 0, 300, 0);
+          const chartWidth = ctx.chart.width;
+          const gradient = ctx.chart.ctx.createLinearGradient(0, 0, chartWidth, 0);
           gradient.addColorStop(0, 'red');
           gradient.addColorStop(0.5, 'yellow');
           gradient.addColorStop(1, 'green');
           return gradient;
         },
         borderRadius: 0,
-        barThickness: 20,
+        barThickness: 'flex', // use flexible sizing
       },
     ],
   };
@@ -35,21 +35,13 @@ const Graph = ({ percentage }) => {
   const options = {
     indexAxis: 'y',
     scales: {
-      x: {
-        min: 0,
-        max: 100,
-        display: false,
-      },
-      y: {
-        display: false,
-      },
+      x: { min: 0, max: 100, display: false },
+      y: { display: false },
     },
     plugins: {
       legend: { display: false },
       tooltip: { enabled: false },
-      verticalLine: {
-        value: percentage,
-      },
+      verticalLine: { value: percentage },
     },
     responsive: true,
     maintainAspectRatio: false,
@@ -60,7 +52,6 @@ const Graph = ({ percentage }) => {
     afterDatasetsDraw(chart, args, pluginOptions) {
       const { ctx, chartArea, scales } = chart;
       const x = scales.x.getPixelForValue(pluginOptions.value);
-
       ctx.save();
       ctx.beginPath();
       ctx.moveTo(x, chartArea.top);
@@ -72,12 +63,14 @@ const Graph = ({ percentage }) => {
     },
   };
 
-  return (
-    <div className="health-container">
-      <div className="health-header">
-        <span className="label">Health</span>
-        <span className="percent">{percentage}%</span>
-      </div>
+return (
+  <div className="health-container" style={{ width: size }}>
+    <div className="health-header">
+      <span className="label">Health</span>
+      <span className="percent">{percentage}%</span>
+    </div>
+
+    <div className="ratio-box">
       <div className="bar-wrapper">
         <Bar data={data} options={options} plugins={[verticalLinePlugin]} />
         <div className="bar-labels">
@@ -86,7 +79,10 @@ const Graph = ({ percentage }) => {
         </div>
       </div>
     </div>
-  );
+  </div>
+);
+
 };
+
 
 export default Graph;

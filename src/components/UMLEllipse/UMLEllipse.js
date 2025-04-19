@@ -1,16 +1,13 @@
-import React, { useState, useRef, useEffect } from "react"
+import React, { useState, useRef, useEffect } from "react";
 import "./UMLEllipse.css";
 import Popup from "../Popup/Popup";
-import { lighten } from "polished";
 import svgMap from "./svgMap.json";
 
 const svgRequire = require.context("../../assets/svgs", true, /\.svg$/);
 
-const UMLEllipse = ({ region = "middle", width = "100%", borderColor = "#000", label }) => {
-  const backgroundColor =
-    borderColor === "red" ? lighten(0.41, borderColor) : lighten(0.61, borderColor);
-
+const UMLEllipse = ({ region = "middle", width = "100%", borderColor = "#000", label, scores = [] }) => {
   const filenames = svgMap[region] || [];
+
   const icons = filenames
     .map((name) => {
       try {
@@ -34,7 +31,6 @@ const UMLEllipse = ({ region = "middle", width = "100%", borderColor = "#000", l
     if (ellipseRef.current) {
       const diameter = ellipseRef.current.offsetWidth;
       const iconSize = 36; // px size of icon button
-      const padding = 2; // px cutout space
       const centerToEdge = diameter / 2;
       const desiredRadius = centerToEdge + iconSize * 0.25;
       const percent = (desiredRadius / centerToEdge) * 50; // convert to %
@@ -42,36 +38,64 @@ const UMLEllipse = ({ region = "middle", width = "100%", borderColor = "#000", l
     }
   }, []);
 
+  const getColorFromScore = (score) => {
+    if (score >= 70) return "#66cc66";    // soft green
+    if (score >= 40) return "#ffd700";    // soft yellow
+    return "#ff6666";                     // soft red
+  };
+  
+  
+  
+
+  const gradientStops = icons.map((_, idx) => {
+    const angle = angleStep * idx - Math.PI / 2;
+    const x = 50 + 50 * Math.cos(angle);
+    const y = 50 + 50 * Math.sin(angle);
+    const color = getColorFromScore(scores[idx] ?? 70);
+    return `radial-gradient(circle at ${x}% ${y}%, ${color} 30%, transparent 70%)`;
+  });
+
+  const backgroundStyle = {
+    backgroundImage: gradientStops.reverse().join(", ")
+  };
+
   return (
     <div className="ellipse-wrapper" style={{ width }}>
       <div
         className="ellipse"
         ref={ellipseRef}
-        style={{ borderColor, backgroundColor }}
+        style={{ border: "none", ...backgroundStyle }}
       >
         {label && <span className="ellipse-label">{label}</span>}
+        <span className="ellipse-score">score</span>
         {icons.map((src, idx) => {
           const angle = angleStep * idx - Math.PI / 2;
           const x = 50 + radiusPercent * Math.cos(angle);
           const y = 50 + radiusPercent * Math.sin(angle);
           const iconName = filenames[idx].replace(".svg", "");
-
+          const bgColor = getColorFromScore(scores[idx] ?? 70);
           return (
+            
             <button
               key={idx}
               className="ellipse-icon-button"
-              style={{ 
-                top: `${y}%`, 
-                left: `${x}%`
-              }}
+              style={{
+                top: `${y}%`,
+                left: `${x}%`,
+                backgroundColor: "white", // base layer (like a hole punch)
+                borderRadius: "50%",
+                padding: "8px",
+                boxShadow: `0 0 0 2px ${bgColor}`, // outline with the score color
+                zIndex: 2
+              }}                          
               onClick={() => setActiveIdx(idx === activeIdx ? null : idx)}
               aria-label={`Open popup for icon ${idx}`}
             >
               <img src={src} alt={`icon-${idx}`} />
               {activeIdx === idx && (
                 <Popup
-                  iconKey={iconName} // remove .svg extension
-                  score={75}       // or some actual score later
+                  iconKey={iconName}
+                  score={scores[idx] ?? 75}
                 />
               )}
             </button>
