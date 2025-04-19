@@ -4,7 +4,10 @@ html, body, #root {
 .ellipse-wrapper {
   position: relative;
   aspect-ratio: 1 / 1;
+  max-width: 650px; /* optional cap */
+  margin: auto; /* optional to center */
 }
+
 
 .ellipse {
   width: 100%;
@@ -29,9 +32,8 @@ html, body, #root {
 .ellipse-icon-button {
   position: absolute;
   transform: translate(-50%, -50%);
-  width: 80px; /* icon size + 4px padding total */
-  height: 80px;
-  background-color: white; /* creates the white cutout effect */
+  width: 100px; /* icon size + 4px padding total */
+  height: 100px;
   border-radius: 50%;
   border: none;
   display: flex;
@@ -61,4 +63,12 @@ html, body, #root {
   white-space: nowrap;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
   z-index: 3;
+}
+
+.ellipse-score {
+  position: absolute;
+  z-index: 1;
+  font-size: 5rem;
+  font-weight: bold;
+  color: #333;
 }

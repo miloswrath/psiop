@@ -22,9 +22,7 @@ function Lower() {
           {/* Add future content here */}
           <Graph className="graph" percentage={69} size="900px" />
           <TextBox size="900px" text=
-          {`This is line one.
-this is line two.
-and here's line three with more detail.`} 
+          {`This overview highlights how lifestyle and demographic factors—like sex, smoking, alcohol use, and physical activity—affect long-term health. While some risks are biological, healthy habits like regular exercise can help reduce negative outcomes and support overall well-being.`} 
            />
         </div>
       </div>

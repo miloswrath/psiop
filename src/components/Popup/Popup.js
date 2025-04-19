@@ -7,12 +7,12 @@ const Popup = ({ iconKey, score, data }) => {
   const isGood = score >= 70;
   const message = contentList[isGood ? 0 : 1] || "No information available.";
   const renderedMessage = message.replace(/\{\{score\}\}/g, score ?? "");
+
   return (
-    <div className="popup-box">
-      <p>{renderedMessage}</p>
+    <div className="popup-box" style={{ width: "240px" }}>
+      <p style={{ fontSize: "20px", lineHeight: "1.4" }}>{renderedMessage}</p>
     </div>
   );
 };
-
 
 export default Popup;
