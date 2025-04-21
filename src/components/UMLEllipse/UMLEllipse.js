@@ -5,7 +5,7 @@ import svgMap from "./svgMap.json";
 
 const svgRequire = require.context("../../assets/svgs", true, /\.svg$/);
 
-const UMLEllipse = ({ region = "middle", width = "100%", borderColor = "#000", label, scores = [] }) => {
+const UMLEllipse = ({ region = "middle", width = "100%", borderColor = "#000", label, scores = {} }) => {
   const filenames = svgMap[region] || [];
 
   const icons = filenames
@@ -73,7 +73,8 @@ const UMLEllipse = ({ region = "middle", width = "100%", borderColor = "#000", l
           const x = 50 + radiusPercent * Math.cos(angle);
           const y = 50 + radiusPercent * Math.sin(angle);
           const iconName = filenames[idx].replace(".svg", "");
-          const bgColor = getColorFromScore(scores[idx] ?? 70);
+          const score = scores[iconName] ?? 70;
+          const bgColor = getColorFromScore(score);
           return (
             
             <button

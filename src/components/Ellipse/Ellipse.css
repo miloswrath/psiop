@@ -8,7 +8,7 @@
   justify-content: center;
   text-align: center;
   font-family: "Poppins", sans-serif;
-  font-size: 1rem;
+  font-size: 10rem;
   box-sizing: border-box;          /* Ensures border doesn't mess with size */
 }
 
@@ -47,4 +47,70 @@
   background-color: #ccc;
   transform: translateX(-50%);
   z-index: -1;
+}
+
+
+.ellipse {
+  aspect-ratio: 1 / 1;              /* Makes height always match width */
+  border-radius: 50%;              /* Makes it a circle */
+  border-style: solid;             /* Border style set statically */
+  border-width: 3px;               /* Border thickness set statically */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-family: "Poppins", sans-serif;
+  font-size: 10rem;
+  box-sizing: border-box;          /* Ensures border doesn't mess with size */
+}
+
+.ellipse-inner {
+  font-size: 25px;
+  color: #333;
+}
+
+/* Stack all ellipses vertically */
+.ellipseStack {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  gap: 2rem;
+}
+
+/* Container for the 3 lower ellipses */
+.ellipseDivider {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 2rem;
+  position: relative;
+  padding-top: 2rem;
+}
+
+/* Vertical divider line between Overall Score and bottom ellipses */
+.ellipseDivider::before {
+  content: "";
+  position: absolute;
+  top: -2rem;
+  bottom: 100%;
+  left: 50%;
+  width: 2px;
+  background-color: #ccc;
+  transform: translateX(-50%);
+  z-index: -1;
+}
+.ellipse-number {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #111;
+  margin-bottom: 0.5rem;
+  text-align: center;
+}
+
+.ellipse-label {
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: #444;
+  text-align: center;
 }
