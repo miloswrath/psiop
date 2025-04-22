@@ -5,14 +5,22 @@ import svgMap from "./svgMap.json";
 
 const svgRequire = require.context("../../assets/svgs", true, /\.svg$/);
 
-const UMLEllipse = ({ region = "middle", width = "100%", borderColor = "#000", label, scores = {} }) => {
+const UMLEllipse = ({
+  region = "middle",
+  width = "100%",
+  borderColor = "#000",
+  label,
+  scores = {},
+}) => {
+  // 1. Pull the right filenames for this region
   const filenames = svgMap[region] || [];
 
+  // 2. Dynamically require each SVG (skip any that fail)
   const icons = filenames
     .map((name) => {
       try {
         return svgRequire(`./${name}`);
-      } catch (err) {
+      } catch {
         console.error(`SVG not found: ${name}`);
         return null;
       }
@@ -21,83 +29,82 @@ const UMLEllipse = ({ region = "middle", width = "100%", borderColor = "#000", l
 
   const count = icons.length;
   const angleStep = (Math.PI * 2) / count;
+
+  // popup state
   const [activeIdx, setActiveIdx] = useState(null);
 
-  // Dynamically determine radius based on icon size and wrapper
+  // radius calculation
   const ellipseRef = useRef(null);
-  const [radiusPercent, setRadiusPercent] = useState(45); // default fallback
-
+  const [radiusPercent, setRadiusPercent] = useState(45);
   useEffect(() => {
     if (ellipseRef.current) {
       const diameter = ellipseRef.current.offsetWidth;
-      const iconSize = 36; // px size of icon button
+      const iconSize = 36;
       const centerToEdge = diameter / 2;
       const desiredRadius = centerToEdge + iconSize * 0.25;
-      const percent = (desiredRadius / centerToEdge) * 50; // convert to %
-      setRadiusPercent(percent);
+      setRadiusPercent((desiredRadius / centerToEdge) * 50);
     }
   }, []);
 
   const getColorFromScore = (score) => {
-    if (score >= 70) return "#66cc66";    // soft green
-    if (score >= 40) return "#ffd700";    // soft yellow
-    return "#ff6666";                     // soft red
+    if (score >= 70) return "#66cc66";
+    if (score >= 40) return "#ffd700";
+    return "#ff6666";
   };
-  
-  
-  
 
-  const gradientStops = icons.map((_, idx) => {
+  // 3. Build the background gradients by key, not index
+  const gradientStops = filenames.map((fname, idx) => {
     const angle = angleStep * idx - Math.PI / 2;
     const x = 50 + 50 * Math.cos(angle);
     const y = 50 + 50 * Math.sin(angle);
-    const color = getColorFromScore(scores[idx] ?? 70);
+
+    const key = fname.replace(".svg", "");
+    const score = scores[key] ?? 70;
+    const color = getColorFromScore(score);
+
     return `radial-gradient(circle at ${x}% ${y}%, ${color} 30%, transparent 70%)`;
   });
 
   const backgroundStyle = {
-    backgroundImage: gradientStops.reverse().join(", ")
+    border: `2px solid ${borderColor}`,
+    backgroundImage: gradientStops.reverse().join(", "),
   };
 
   return (
     <div className="ellipse-wrapper" style={{ width }}>
-      <div
-        className="ellipse"
-        ref={ellipseRef}
-        style={{ border: "none", ...backgroundStyle }}
-      >
+      <div className="ellipse" ref={ellipseRef} style={backgroundStyle}>
         {label && <span className="ellipse-label">{label}</span>}
-        <span className="ellipse-score">score</span>
         {icons.map((src, idx) => {
           const angle = angleStep * idx - Math.PI / 2;
           const x = 50 + radiusPercent * Math.cos(angle);
           const y = 50 + radiusPercent * Math.sin(angle);
-          const iconName = filenames[idx].replace(".svg", "");
-          const score = scores[iconName] ?? 70;
-          const bgColor = getColorFromScore(score);
+
+          const fname = filenames[idx];
+          const iconKey = fname.replace(".svg", "");
+          const score = scores[iconKey] ?? 70;
+          const outlineColor = getColorFromScore(score);
+
           return (
-            
             <button
-              key={idx}
+              key={iconKey}
               className="ellipse-icon-button"
               style={{
                 top: `${y}%`,
                 left: `${x}%`,
-                backgroundColor: "white", // base layer (like a hole punch)
+                backgroundColor: "white",
                 borderRadius: "50%",
                 padding: "8px",
-                boxShadow: `0 0 0 2px ${bgColor}`, // outline with the score color
-                zIndex: 2
-              }}                          
-              onClick={() => setActiveIdx(idx === activeIdx ? null : idx)}
-              aria-label={`Open popup for icon ${idx}`}
+                boxShadow: `0 0 0 2px ${outlineColor}`,
+                zIndex: 2,
+              }}
+              onClick={() =>
+                setActiveIdx(idx === activeIdx ? null : idx)
+              }
+              aria-label={`Open popup for ${iconKey}`}
             >
-              <img src={src} alt={`icon-${idx}`} />
+              <img src={src} alt={iconKey} />
               {activeIdx === idx && (
-                <Popup
-                  iconKey={iconName}
-                  score={scores[idx] ?? 75}
-                />
+                <Popup iconKey={iconKey} score={score} />
               )}
             </button>
           );

@@ -1,16 +1,34 @@
-import React from "react";
+import React, { useContext } from "react";
 import UMLEllipse from "../../components/UMLEllipse/UMLEllipse";
 import Banner from "../../components/Banner/Banner";
 import Graph from "../../components/Graph/Graph";
 import TextBox from "../../components/Textbox/Textbox"
 import "./Upper.css";
+import { OutputContext } from "../../App"; // adjust path if needed
 
 function Upper() {
+  const upperKeys = ['sleep', 'cognition', 'WMH', 'education'];
+  const outputData = useContext(OutputContext);
 
+  const getUpperValues = () => {
+    const result = {};
+    for (const key of upperKeys) {
+      result[key] = outputData.data[key];
+    }
+    console.log({ result });
+    return result;
+  };
+
+  const mean = (arr) => arr.reduce((a, b) => a + b, 0) / arr.length;
+
+  const upper_mean = mean(upperKeys.map(k => outputData.data[k] ?? 0));
+  console.log({upper_mean});
+  const upperValues = getUpperValues();
   return (
 
     <div className="upper-container" >
     <Banner />
+
 
       <div className="upper-content" >
       
@@ -20,14 +38,14 @@ function Upper() {
           region="upper"
           width="700px"
           borderColor="transparent"
-          scores={[80, 30, 65, 90]} // Top = green, left = red, bottom = yellow, right = green
+          scores={upperValues} // Top = green, left = red, bottom = yellow, right = green
         />
         </div>
         <div className="right-pane">
           {/* Add future content here */}
-          <Graph className="graph" percentage={69} size="900px" />
+          <Graph className="graph" percentage={upper_mean} size="900px" />
           <TextBox size="900px" text=
-          {`This section focuses on factors related to brain health and cognitive aging. Quality sleep and educational background contribute to cognitive resilience, while cognition scores reflect current mental performance. WMH (white matter hyperintensities), captured via MRI, indicate structural changes in the brain that may be associated with aging or vascular risk. Together, these variables provide a deeper look into brain function and long-term cognitive well-being.`} 
+          {`This section is about your brain and how it changes as you get older. Getting good sleep and having more education can help keep your brain strong. Your thinking score shows how well your brain is working right now. A brain scan can also show small changes in the brain that may happen with age or heart problems. All of this information helps give a better picture of your brain health over time.`} 
            />
         </div>
       </div>
