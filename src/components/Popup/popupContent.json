@@ -1,50 +1,50 @@
 {
   "sleep": [
-    "Your brain score {{score}} is very high, this is great! Your cognitive systems are functioning optimally.",
-    "Your brain score {{score}} is lower than average. Consider exploring activities that support cognitive function."
+    "Your sleep score {{score}} is very good—this means you're likely getting the rest your body and mind need. Keep it up!",
+    "Your sleep score {{score}} is lower than usual. Getting enough good sleep can help you feel better during the day. Try simple steps like keeping a regular bedtime or limiting naps."
   ],
-  "mri": [
-    "Your heart score {{score}} reflects strong cardiovascular health—keep up the healthy habits!",
-    "Your heart score {{score}} suggests some concerns. A follow-up with a provider may be beneficial."
-  ],
-  "cognition": [
-    "Excellent lung function! Your lung score {{score}} shows great respiratory capacity.",
-    "Your lung score {{score}} is below expected levels. Monitoring or lifestyle adjustments may help."
-  ],
-  "edu": [
-  "Excellent lung function! Your lung score {{score}} shows great respiratory capacity.",
-  "Your lung score {{score}} is below expected levels. Monitoring or lifestyle adjustments may help."
+  "WMH": [
+    "Your brain scan score {{score}} shows very few changes—this is a good sign. It means your brain's white matter looks healthy.",
+    "Your brain scan score {{score}} shows some changes in the white matter. These changes are common with age, but it may help to talk with your doctor about ways to support brain health."
   ],
   "diabetes": [
-  "Your diabetes score {{score}} is optimal. Keep up the great work!",
-  "Your diabetes score {{score}} indicates a need for lifestyle changes. Consider consulting a healthcare provider."
+    "Your diabetes risk score {{score}} is low based on your answers. This is a good sign—your current habits may be helping to keep your blood sugar in a healthy range.",
+    "Your diabetes risk score {{score}} is higher than average based on your self-reported information. This doesn’t mean you have diabetes, but it may be a good idea to check in with your doctor and talk about ways to lower your risk."
   ],
-  "blood_pressure": [
-    "Your blood pressure score {{score}} is excellent. Maintain your healthy habits!",
-    "Your blood pressure score {{score}} suggests potential issues. Regular monitoring is recommended."
+  "cognition": [
+    "Great job! Your thinking and memory score {{score}} looks strong. This means your mind is working well—keep staying active and engaged.",
+    "Your thinking and memory score {{score}} is a little lower than usual. This can happen for many reasons. Simple things like staying social, learning new skills, and getting good sleep can help keep your mind sharp."
   ],
-  "simple_logo": [
+  "education": [
+    "Your education score {{score}} shows strong learning history. Staying mentally active can help keep your mind sharp.",
+    "Your education score {{score}} is lower than average. Lifelong learning—like reading, puzzles, or learning new skills—can still support brain health at any age."
+  ],
+  "cholesterol": [
+    "Your high cholesterol risk score {{score}} is very low, based on your answers. This suggests you’re doing a great job managing your health. Keep up those heart-healthy habits!",
+    "Your high cholesterol risk score {{score}} is on the higher side, based on your self-reported information. This doesn't mean you have high cholesterol, but it may be worth talking with your doctor to stay ahead of any potential concerns."
+  ],
+  "hypertension": [
   "Your hypertension score {{score}} is in a healthy range. Keep up the heart-healthy habits!",
   "Your hypertension score {{score}} indicates elevated blood pressure. Monitoring and lifestyle changes may help lower risk."
   ],
-  "heart_cardiogram": [
-    "Your heart disease score {{score}} reflects strong cardiovascular health—keep up the healthy habits!",
-    "Your heart disease score {{score}} suggests some concerns. A follow-up with a provider may be beneficial."
+  "heart_disease": [
+    "Your heart health risk score {{score}} is low, which is a great sign. It means your current habits are likely helping your heart stay strong—keep it up!",
+    "Your heart health risk score {{score}} is higher than average. This doesn’t mean you have heart disease, but it may be helpful to check in with your doctor to see if any changes could support your heart."
   ],
-  "sexual_reproductive_health": [
-  "Based on your sex, you may be more prone to certain health conditions. Staying active, eating well, and regular checkups can help reduce your risk.",
-  "Your sex may influence your risk for specific health issues. However, adopting healthy habits can help prevent or delay many of these complications."
+  "sex": [
+    "Your sex, in combination with other health factors, may be associated with either increased or reduced risk for certain conditions. Staying active, eating well, and attending regular checkups can help manage these risks.",
+    "Your sex may contribute to your overall health profile when considered alongside other indicators. While it can influence risk levels, healthy lifestyle choices remain key to prevention and well-being."
   ],
-  "smoking": [
-    "Your smoking score {{score}} is excellent. Maintain your healthy habits!",
-    "Your smoking score {{score}} suggests potential issues. Regular monitoring is recommended."
+  "inac": [
+    "Your smoking-related risk score {{score}} is low. That means smoking and related habits don’t seem to be raising your health risks. Keep making healthy choices!",
+    "Your smoking-related risk score {{score}} is higher than usual. This doesn’t mean smoking alone is the cause—other habits may also play a part. It might help to talk with your doctor about ways to lower your risk."
   ],
-  "exercise_running": [
-    "Your exercise score {{score}} is optimal. Keep up the great work!",
-    "Your exercise score {{score}} indicates a need for lifestyle changes. Consider consulting a healthcare provider."
+  "exercise": [
+    "Your exercise score {{score}} shows you're staying active—great job! Regular movement can help keep your heart, brain, and body healthy.",
+    "Your exercise score {{score}} suggests that getting more regular movement could help your overall health. Even small changes, like walking a bit more each day, can make a big difference. A doctor or health coach can help you get started."
   ],
-  "alcoholic_drinks": [
-    "Your alcohol score {{score}} is excellent. Maintain your healthy habits!",
-    "Your alcohol score {{score}} suggests potential issues. Regular monitoring is recommended."
+  "meta_entropy": [
+    "Your 24-hour activity cycle score {{score}} reflects a well-balanced daily rhythm, which may offer protective benefits when combined with other positive health factors. Keep maintaining a consistent n/brainaoutine.",
+    "Your 24-hour activity cycle score {{score}} suggests an irregular daily rhythm, which may contribute to increased health risks when considered alongside other factors. Establishing a stable routine could help improve overall well-being."
   ]
 }

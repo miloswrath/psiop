@@ -32,30 +32,41 @@ function App() {
     return keys[Math.floor(Math.random() * keys.length)];
   });
 
-  const contextValue = useMemo(() => ({
-    data: outputData[currentId],
-    id: currentId,
-    setRandomId: () => {
-      const keys = Object.keys(outputData);
-      const newId = keys[Math.floor(Math.random() * keys.length)];
-      const entry = outputData[newId];
+  const contextValue = useMemo(() => {
+    const entry = outputData[currentId];
 
-      // Mean calculations
-      const mean = (arr) => arr.reduce((a, b) => a + b, 0) / arr.length;
-      const upperKeys = ['sleep', 'cognition', 'WMH', 'education'];
-      const middleKeys = ['diabetes', 'heart_disease', 'hypertension', 'cholesterol'];
-      const lowerKeys = ['sex', 'smoke', 'meta_entropy', 'exercise'];
+    // 🔍 Log full entry each time context changes
+    console.log("Current ID:", currentId);
+    console.log("Full entry for current ID:", entry);
 
-      const upper = mean(upperKeys.map(k => entry[k] ?? 0));
-      const middle = mean(middleKeys.map(k => entry[k] ?? 0));
-      const lower = mean(lowerKeys.map(k => entry[k] ?? 0));
+    return {
+      data: entry,
+      id: currentId,
+      setRandomId: () => {
+        const keys = Object.keys(outputData);
+        const newId = keys[Math.floor(Math.random() * keys.length)];
+        const newEntry = outputData[newId];
 
-      console.log("Random ID selected:", newId);
-      console.log("Means — Upper:", upper.toFixed(2), "| Middle:", middle.toFixed(2), "| Lower:", lower.toFixed(2));
+        // Optional: log full data of new entry
+        console.log("Random ID selected:", newId);
+        console.log("New entry values:", newEntry);
 
-      setCurrentId(newId);
-    }
-  }), [currentId]);
+        // Mean calculations
+        const mean = (arr) => arr.reduce((a, b) => a + b, 0) / arr.length;
+        const upperKeys = ['sleep', 'cognition', 'WMH', 'education'];
+        const middleKeys = ['diabetes', 'heart_disease', 'hypertension', 'cholesterol'];
+        const lowerKeys = ['sex', 'smoke', 'meta_entropy', 'exercise'];
+
+        const upper = mean(upperKeys.map(k => newEntry[k] ?? 0));
+        const middle = mean(middleKeys.map(k => newEntry[k] ?? 0));
+        const lower = mean(lowerKeys.map(k => newEntry[k] ?? 0));
+
+        console.log("Means — Upper:", upper.toFixed(2), "| Middle:", middle.toFixed(2), "| Lower:", lower.toFixed(2));
+
+        setCurrentId(newId);
+      }
+    };
+  }, [currentId]);
 
   return (
     <OutputContext.Provider value={contextValue}>

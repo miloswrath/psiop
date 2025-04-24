@@ -1,13 +1,22 @@
 .popup-box {
-  position: absolute;
+  position: fixed;
+  top: 50%;
+  left: clamp(10px, calc(50% - 125px), calc(100vw - 260px));
+  transform: translate(-50%, -50%);
+  
   background-color: white;
   padding: 10px;
   border-radius: 8px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  max-width: 250px;
+  
+  /* never wider or taller than the viewport minus padding */
+  max-width: calc(100vw - 20px);
+  max-height: calc(100vh - 20px);
+  
+  /* scroll internally if content is too big */
+  overflow: auto;
+  
   z-index: 1000;
   white-space: normal;
   word-wrap: break-word;
-  top: 50%;
-  transform: translateY(-50%);
 }

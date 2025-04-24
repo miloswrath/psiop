@@ -5,6 +5,7 @@ import Human from "../../components/Human/Human";
 import Ellipse from "../../components/Ellipse/Ellipse";
 import "./Home.css";
 import { OutputContext } from "../../App"; // adjust path if needed
+import InstructionBox from "../../components/Instructions/InstructionBox";
 
 
 function Home() {
@@ -50,6 +51,7 @@ function Home() {
 
         {/* Right section with circles */}
         <div className="right-section">
+          <InstructionBox text="Click any of the colored regions on the body to explore health metrics and learn more about each area." />
           <div className="ellipseStack">
             <Ellipse width="300px" label="Overall Score" number={avgRegion.latent} />
             <div className="ellipseDivider">
