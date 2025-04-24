@@ -1,5 +1,5 @@
 import React, { useState, useImperativeHandle, forwardRef } from 'react';
-import './Textbox.css';
+
 
 const ChatBox = forwardRef(({ preMessageContent, interpretation }, ref) => {
   const [messages, setMessages] = useState([]);

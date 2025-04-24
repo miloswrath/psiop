@@ -1,17 +1,63 @@
 .textbox {
-  padding: 10px 16px;
-  border-radius: 10px;
-  background-color: #fffaf4;
-  color: #333;
-  font-weight: 500;
-  font-size: 34px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  margin-top: 12px;
-  /* Behavior */
-  max-width: 100%;
-  word-wrap: break-word;
-  word-break: break-word;
-  white-space: pre-wrap;
-
-  /* Dynamic height, fixed width from style prop */
+  width: 100%;
+  background-color: #f5f5f5;
+  padding: 1rem;
+  border-radius: 12px;
+  overflow-y: auto;
+  max-height: 500px;
 }
+
+.message {
+  margin-bottom: 1rem;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  background-color: white;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+  white-space: pre-wrap;
+}
+
+.user-msg {
+  border-left: 6px solid #3b82f6;
+}
+
+.bot-msg {
+  border-left: 6px solid #10b981;
+}
+
+.chatbox-mode {
+  display: flex;
+  flex-direction: column;
+  max-width: 700px;
+  height: 650px; /* ⬆️ increased overall height */
+  margin: 1rem auto;
+  padding: 1.5rem;
+  border-radius: 12px;
+  background-color: #f9f9f9;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.chat-scroll-area {
+  flex-grow: 1;
+  overflow-y: auto;
+  max-height: 500px; /* ⬆️ more room for scrollable messages */
+  background: white;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+}
+
+
+
+.back-button {
+  background: #f0f0f0;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  cursor: pointer;
+}
+
+
