@@ -26,6 +26,7 @@ function Upper() {
   return (
     <div className="home-container">
       <Banner />
+<<<<<<< HEAD
 
       <div className="home-content">
         <div className="left-section">
@@ -47,6 +48,28 @@ function Upper() {
             size="900px"
             text={`This section is about your brain and how it changes as you get older. Getting good sleep and having more education can help keep your brain strong. Your thinking score shows how well your brain is working right now. A brain scan can also show small changes in the brain that may happen with age or heart problems. All of this information helps give a better picture of your brain health over time.`}
           />
+=======
+  
+      <InstructionBox text="Click on each of the icons to show your score with some basic information." />
+  
+      <div className="upper-content">
+        <div className="split-layout">
+          <div className="left-pane">
+            <UMLEllipse
+              region="upper"
+              width="700px"
+              borderColor="transparent"
+              scores={upperValues}
+            />
+          </div>
+          <div className="right-pane">
+            <Graph className="graph" percentage={upper_mean} size="900px" />
+            <TextBox
+              size="900px"
+              text={`This section is about your brain and how it changes as you get older. Getting good sleep and having more education can help keep your brain strong. Your thinking score shows how well your brain is working right now. A brain scan can also show small changes in the brain that may happen with age or heart problems. All of this information helps give a better picture of your brain health over time.`}
+            />
+          </div>
+>>>>>>> eli
         </div>
       </div>
     </div>
