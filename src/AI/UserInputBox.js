@@ -8,8 +8,8 @@ function UserInputBox({ addMessage }) {
 
   const handleSendMessage = async () => {
     if (userQuery.trim() === "") return;
-    await addMessage(userQuery, "user");
     setUserQuery("");
+    await addMessage(userQuery, "user");
   };
 
   const handleKeyPress = (e) => {

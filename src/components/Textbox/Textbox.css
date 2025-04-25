@@ -4,7 +4,7 @@
   padding: 1rem;
   border-radius: 12px;
   overflow-y: auto;
-  max-height: 500px;
+  max-height: 600px;
   font-size: 1.5rem;
 }
 
@@ -28,7 +28,7 @@
 .chatbox-mode {
   display: flex;
   flex-direction: column;
-  max-width: 700px;
+  max-width: 1000px;
   height: 650px; /* ⬆️ increased overall height */
   margin: 1rem auto;
   padding: 1.5rem;

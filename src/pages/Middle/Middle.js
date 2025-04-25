@@ -50,6 +50,7 @@ function Middle() {
             <TextBox
               size="900px"
               text={`This section focuses on metabolic and cardiovascular health. Diabetes and high blood pressure are key risk factors that can impact heart function over time. Hypertension, often related to lifestyle and genetics, further contributes to cardiovascular strain. Combined with your heart disease risk, these measures offer a clear picture of your overall heart and circulatory health.`}
+              results={middleValues}
             />
           </div>
         </div>

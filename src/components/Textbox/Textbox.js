@@ -1,53 +1,69 @@
-import React, { useState, useImperativeHandle, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
+import rehypeRaw from "rehype-raw";
 import "./Textbox.css";
 import UserInputBox from "../../AI/UserInputBox";
-import ChatProfileBubble from "../../AI/ChatProfileBubble";
 
-const TextBox = ({ text, size = "250px" }) => {
+const TextBox = ({ text, size = "250px", results }) => {
+  console.log({results})
   const [showChat, setShowChat] = useState(true);
   const [messages, setMessages] = useState([
-    { chatContent: text, originatingUser: "bot" }
+    { chatContent: text, originatingUser: "bot" },
   ]);
-  
+  const realResults = `Results from Upper:\n${JSON.stringify(results, null, 2)}`;
+  console.log(`Real Results: ${realResults}`)
 
-  const handleClick = () => {
-    setShowChat(true);
-  };
+  const bottomRef = useRef(null);
 
-  const addMessage = async (chatContent, originatingUser) => {
-    const newMessage = { chatContent, originatingUser };
-    setMessages((prev) => [...prev, newMessage]);
+  // 2. scroll whenever messages update
+  useEffect(() => {
+    bottomRef.current?.scrollIntoView({ behavior: "smooth" });
+  }, [messages]);
 
-    if (originatingUser === "user") {
-      try {
-        const response = await fetch("http://localhost:8000/api/messages", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            currentMessage: newMessage,
-            previousMessages: messages,
-          }),
-        });
+const addMessage = async (chatContent, originatingUser) => {
+  // 1) Build a *pure* message object
+  const newMessage = { chatContent, originatingUser };
+  const history    = [...messages, newMessage];
+  setMessages(history);
 
-        const data = await response.json();
+  // 2) If the user just sent a message, call your API
+  if (originatingUser === "user") {
+    try {
+      // 2a) Pack up the payload: current turn, full history, plus your results
+      const payload = {
+        currentMessage:    newMessage,
+        previousMessages:  history,
+        results:           realResults
+      };
 
-        setMessages((prev) => [
-          ...prev,
-          { chatContent: data.response, originatingUser: "bot" },
-        ]);
-      } catch (error) {
-        setMessages((prev) => [
-          ...prev,
-          {
-            chatContent: `⚠️ Error reaching the AI: \n\n${error.message}`,
-            originatingUser: "bot",
-          },
-        ]);
-      }
+      // 2b) Fire off the POST
+      const res = await fetch("http://localhost:8000/api/messages", {
+        method:  "POST",
+        headers: { "Content-Type": "application/json" },
+        body:    JSON.stringify(payload),
+      });
+
+      // 2c) Parse & append the bot’s reply
+      const data = await res.json();
+      setMessages((prev) => [
+        ...prev,
+        { chatContent: data.response, originatingUser: "bot" },
+      ]);
+    } catch (err) {
+      // 2d) On error, show a failure message from “bot”
+      setMessages((prev) => [
+        ...prev,
+        {
+          chatContent: `⚠️ Error reaching the AI:\n${err.message}`,
+          originatingUser: "bot",
+        },
+      ]);
     }
-  };
+  }
+};
+
+  const handleClick = () => setShowChat(true);
 
   return (
     <>
@@ -62,18 +78,25 @@ const TextBox = ({ text, size = "250px" }) => {
         </div>
       ) : (
         <div className="textbox chatbox-mode" style={{ width: "100%" }}>
-          
-
           {/* Chat messages */}
           <div className="chat-scroll-area">
             {messages.map((msg, idx) => (
               <div
                 key={idx}
-                className={`message ${msg.originatingUser === "user" ? "user-msg" : "bot-msg"}`}
+                className={`message ${
+                  msg.originatingUser === "user" ? "user-msg" : "bot-msg"
+                }`}
               >
-                {msg.chatContent}
+                <ReactMarkdown
+                  remarkPlugins={[remarkGfm]}
+                  rehypePlugins={[rehypeRaw]}
+                  skipHtml={false}              // allow raw HTML
+                >
+                  {msg.chatContent}
+                </ReactMarkdown>
               </div>
             ))}
+            <div ref={bottomRef} />
           </div>
 
           {/* Input area */}

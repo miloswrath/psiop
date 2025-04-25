@@ -1,4 +1,3 @@
-# server.py
 from fastapi import FastAPI, Request
 from fastapi.responses import JSONResponse
 import subprocess
@@ -15,21 +14,27 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-
 @app.post("/api/messages")
 async def handle_messages(request: Request):
     data = await request.json()
-    current_message = data.get("currentMessage", {})
-    previous_messages = data.get("previousMessages", [])
+    current_message   = data.get("currentMessage", {})
+    real_results      = data.get("results", "")
+    user_query        = current_message.get("chatContent", "")
 
-    user_query = current_message.get("chatContent", "")
-    result = subprocess.run(["python", "query_data.py", user_query], capture_output=True, text=True)
+    # only put real_results on the CLI once
+    cmd = ["python", "model/query_data.py", user_query]
+    if real_results:
+        cmd.append(real_results)
+
+    result = subprocess.run(cmd, capture_output=True, text=True)
+
+    # for debugging, log the stderr
     if result.returncode != 0:
-        return JSONResponse(status_code=500, content={"error": "Error running query script."})
+        # you can log result.stderr or even return it in dev
+        return JSONResponse(
+            status_code=500,
+            content={"error": "Script failed", "details": result.stderr.strip()}
+        )
 
-    # Parse the result. If your script returns a JSON string, parse it directly.
-    # If it's just a string, you can return it as is.
     response_text = result.stdout.strip()
-
-    # Return a JSON response
     return {"response": response_text}
