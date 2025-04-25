@@ -1,0 +1,26 @@
+.user-input-container {
+    width: 100%;
+    padding: 1rem;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center; /* ⬅ centers input horizontally */
+  }
+  
+  .user-input {
+    width: 95%; /* ⬅ gives some breathing room from edges */
+    padding: 0.75rem 1rem;
+    border: 1px solid #ccc;
+    border-radius: 12px;
+    font-size: 1rem;
+    color: #333;
+    outline: none;
+    transition: border 0.2s ease, box-shadow 0.2s ease;
+  }
+  
+  .user-input:focus {
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.3);
+  }
+    .user-input::placeholder {
+        color: #aaa;
+    }  

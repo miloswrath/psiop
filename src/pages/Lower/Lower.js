@@ -5,6 +5,7 @@ import Graph from "../../components/Graph/Graph";
 import TextBox from "../../components/Textbox/Textbox"
 import "./Lower.css";
 import { OutputContext } from "../../App"; // adjust path if needed
+import InstructionBox from "../../components/Instructions/InstructionBox";
 
 function Lower() {
 
@@ -30,29 +31,29 @@ function Lower() {
     <div className="lower-container" >
     <Banner />
 
-      <div className="lower-content" >
-      
+    <InstructionBox text="This section focuses on lifestyle data including physical activity, metabolic patterns, and sex-specific indicators." />
+
+    <div className="lower-content" >
       <div className="split-layout">
         <div className="left-pane">
           <UMLEllipse
             region="lower"
             width="700px"
             borderColor="transparent"
-            scores={lowerValues} // Top = green, left = red, bottom = yellow, right = green
+            scores={lowerValues}
           />
         </div>
         <div className="right-pane">
-          {/* Add future content here */}
+          <h2 className="header">Lifestyle and Demographic Factors</h2>
           <Graph className="graph" percentage={lower_mean} size="900px" />
-          <TextBox size="900px" text=
-          {`This overview highlights how lifestyle and demographic factors—like sex, smoking, physical activity, and you 24 hour activity cycles—affect long-term health. While some risks are biological, healthy habits like regular exercise can help reduce negative outcomes and support overall well-being.`} 
-           />
+          <TextBox
+            size="900px"
+            text={`This overview highlights how lifestyle and demographic factors—like sex, smoking, physical activity, and your 24-hour activity cycles—affect long-term health. While some risks are biological, healthy habits like regular exercise can help reduce negative outcomes and support overall well-being.`}
+          />
         </div>
       </div>
-      
-      </div>
-
     </div>
+</div>
 
       
   );
