@@ -44,8 +44,12 @@ function Lower() {
           />
         </div>
         <div className="right-pane">
+          <h2 className="header">Lifestyle and Demographic Factors</h2>
           <Graph className="graph" percentage={lower_mean} size="900px" />
-          <TextBox size="900px" text={`This overview highlights how lifestyle and demographic factors—like sex, smoking, physical activity, and your 24-hour activity cycles—affect long-term health. While some risks are biological, healthy habits like regular exercise can help reduce negative outcomes and support overall well-being.`} />
+          <TextBox
+            size="900px"
+            text={`This overview highlights how lifestyle and demographic factors—like sex, smoking, physical activity, and your 24-hour activity cycles—affect long-term health. While some risks are biological, healthy habits like regular exercise can help reduce negative outcomes and support overall well-being.`}
+          />
         </div>
       </div>
     </div>

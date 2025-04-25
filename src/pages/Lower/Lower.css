@@ -37,4 +37,12 @@
     padding: 2rem;
     gap: 1.5rem;              /* Optional spacing between Graph and TextBox */
   }
+
+  .header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 3rem;
+  }
+  
   

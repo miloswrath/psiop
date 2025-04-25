@@ -38,7 +38,7 @@ function Home() {
     <div className="home-container">
       {/* Top Banner */}
       <Banner />
-
+      
       {/* Main content with a divider */}
       <div className="home-content">
         {/* Left section */}
@@ -51,6 +51,7 @@ function Home() {
 
         {/* Right section with circles */}
         <div className="right-section">
+        <h2 className="header">Overall Health Summary</h2>
           <InstructionBox text="Click any of the colored regions on the body to explore health metrics and learn more about each area." />
           <div className="ellipseStack">
             <Ellipse width="300px" label="Overall Score" number={avgRegion.latent} />

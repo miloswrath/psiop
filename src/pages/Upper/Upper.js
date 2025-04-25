@@ -41,6 +41,7 @@ function Upper() {
         <div className="divider" />
 
         <div className="right-section">
+        <h2 className="header">Cognitive and Neurological Overview</h2>
           <Graph className="graph" percentage={upper_mean} size="900px" />
           <TextBox
             size="900px"

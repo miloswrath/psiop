@@ -4,8 +4,11 @@ import UserInputBox from "../../AI/UserInputBox";
 import ChatProfileBubble from "../../AI/ChatProfileBubble";
 
 const TextBox = ({ text, size = "250px" }) => {
-  const [showChat, setShowChat] = useState(false);
-  const [messages, setMessages] = useState([]);
+  const [showChat, setShowChat] = useState(true);
+  const [messages, setMessages] = useState([
+    { chatContent: text, originatingUser: "bot" }
+  ]);
+  
 
   const handleClick = () => {
     setShowChat(true);
@@ -50,7 +53,7 @@ const TextBox = ({ text, size = "250px" }) => {
     <>
       {!showChat ? (
         <div
-          className="textbox"
+          className="textbox text-lg leading-relaxed"
           style={{ width: size, cursor: "pointer" }}
           onClick={handleClick}
         >
@@ -59,9 +62,7 @@ const TextBox = ({ text, size = "250px" }) => {
         </div>
       ) : (
         <div className="textbox chatbox-mode" style={{ width: "100%" }}>
-          <button onClick={() => setShowChat(false)} className="back-button">
-            ⬅ Back
-          </button>
+          
 
           {/* Chat messages */}
           <div className="chat-scroll-area">

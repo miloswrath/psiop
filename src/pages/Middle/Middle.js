@@ -7,6 +7,8 @@ import "./Middle.css";
 import { OutputContext } from "../../App"; // adjust path if needed
 import InstructionBox from "../../components/Instructions/InstructionBox";
 
+
+
 function Middle() {
 
   const middleKeys = ['diabetes', 'heart_disease', 'hypertension', 'cholesterol'];
@@ -43,6 +45,7 @@ function Middle() {
             />
           </div>
           <div className="right-pane">
+          <h2 className="header">Cardiometabolic Health Overview</h2>
             <Graph className="graph" percentage={middle_mean} size="900px" />
             <TextBox
               size="900px"
