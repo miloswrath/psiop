@@ -30,7 +30,7 @@ function Middle() {
     <div className="middle-container">
       <Banner />
       
-      <InstructionBox text="This section summarizes cardiovascular metrics such as blood pressure, heart disease risk, and cholesterol." />
+      <InstructionBox text="Click on each of the icons to show your score with some basic information." />
   
       <div className="middle-content">
         <div className="split-layout">

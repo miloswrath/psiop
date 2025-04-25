@@ -31,7 +31,7 @@ function Lower() {
     <div className="lower-container" >
     <Banner />
 
-    <InstructionBox text="This section focuses on lifestyle data including physical activity, metabolic patterns, and sex-specific indicators." />
+    <InstructionBox text="Click on each of the icons to show your score with some basic information." />
 
     <div className="lower-content" >
       <div className="split-layout">

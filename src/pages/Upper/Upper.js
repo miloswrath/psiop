@@ -29,7 +29,7 @@ function Upper() {
     <div className="upper-container">
       <Banner />
   
-      <InstructionBox text="This section shows health scores for cognitive functions like sleep quality, education, and white matter health." />
+      <InstructionBox text="Click on each of the icons to show your score with some basic information." />
   
       <div className="upper-content">
         <div className="split-layout">
